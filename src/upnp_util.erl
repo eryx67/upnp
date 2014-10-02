@@ -19,6 +19,8 @@ simple_request(Method, Url, Headers, Body) ->
             case hackney:body(Client) of
                 {ok, RespBody, _} ->
                     {ok, Status, RespHeaders, RespBody};
+                {ok, RespBody} ->
+                    {ok, Status, RespHeaders, RespBody};
                 Error ->
                     io:format("Error body ~p~n", [Error]),
                     Error
